@@ -6,6 +6,13 @@ def encode(password): # encoding function
         encoded += str(encoded_integer)
     return encoded
 
+def decode(password):
+    decoded = "" # variable containing decoded password
+    for char in password: # iterates through each character of the password string
+        decoded_integer = (int(char) - 3) % 10
+        decoded += str(decoded_integer)
+    return decoded
+
 def main():
     encoded = "" # variable containing encoded password
 
@@ -26,7 +33,11 @@ def main():
                 encoded = encode(password) # stores encoded password
                 print("Your password has been encoded and stored!")
         elif option == "2": # decode option
-            print("To be added.")
+            if encoded == "":
+                print("No password has been encoded yet.")
+            else:
+                print(f"The encoded password is {encoded}, and the original password is {decode(encoded)}.")
+            
         elif option == "3": # quits program
             break
         else:
